@@ -1,36 +1,35 @@
-name: Your Workflow Name
-
-on:
-  push:
-    branches:
-      - main
+# ... (parte del archivo YAML existente)
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Repositorio
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install Dependencies
+      - name: Instalar Dependencias
         run: |
+          cd jsgaston.github.io
           npm install -g npm@latest
           npm install -g yarn
           npm install
-
-      - name: Generate JSON
-        run: node generate_json.js
-
-      - name: Commit and Push Changes
+          
+      - name: Generar JSON
         run: |
+          cd jsgaston.github.io
+          node generate_json.js
+
+      - name: Commit y Push Cambios
+        run: |
+          cd jsgaston.github.io
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git add music_list.json
-          git commit -m "Update music list [skip ci]"
+          git commit -m "Actualizar lista de canciones [skip ci]"
           git push
