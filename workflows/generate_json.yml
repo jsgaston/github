@@ -23,7 +23,7 @@ jobs:
       - name: Generar JSON
         run: |
           cd jsgaston.github.io
-          node generate_json.js
+          python generate_json.py
 
       - name: Commit y Push Cambios
         run: |
