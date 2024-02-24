@@ -20,8 +20,9 @@ jobs:
 
       - name: Instalar Dependencias
         run: |
+          cd jsgaston.github.io
           python -m pip install --upgrade pip
-          pip install -r jsgaston.github.io/requirements.txt  # Si tienes un archivo requirements.txt con las dependencias
+          python -m pip install -r requirements.txt
 
       - name: Generar JSON
         run: |
